@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cricradio-web-app-deployment
+  labels:
+    app: web-app-deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+  
+  template:
+    metadata:
+      labels:
+        app: web-app
+    
+    spec:
+      containers:
+      - name: cricradio-web-svc
+        image: suhasgumma/cricradio-web-svc:kubernetes
+        ports:
+        - containerPort: 3000

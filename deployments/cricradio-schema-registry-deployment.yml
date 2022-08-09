@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cricradio-schema-registry-deployment
+  labels:
+    app: cricradio-schema-registry-deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cricradio-schema-registry
+  
+  template:
+    meatadata:
+      labels:
+        app: cricradio-schema-registry
+    spec:
+      containers:
+      - name: cricradio-schema-registry
+        image: confluentinc/cp-schema-registry:4.1.1
+        ports:
+          containerPort: 38081
+        env:
+        - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: cricradio-zookeeper:32181
+        - SCHEMA_REGISTRY_HOST_NAME: cricradio-schema-registry
+        - SCHEMA_REGISTRY_LISTENERS: http://cricradio-schema-registry:38081
+        - SCHEMA_REGISTRY_DEBUG: "true"
+        - SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS: GET,POST,PUT,OPTIONS

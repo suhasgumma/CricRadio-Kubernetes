@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cricradio-mysql-service
+spec:
+  selector:
+    app: cricradio-mysql
+  ports:
+    - protocol: TCP
+      port: 3307
+      targetPort: 3307

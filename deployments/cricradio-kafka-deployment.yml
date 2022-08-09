@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cricradio-kafka-deployment
+  labels:
+    app: cricradio-kafka-deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cricradio-kafka
+  
+  template:
+    meatadata:
+      labels:
+        app: cricradio-kafka
+    spec:
+      containers:
+      - name: cricradio-kafka
+        image: confluentinc/cp-kafka:4.1.1
+        ports:
+        - containerPort: 29092
+        - containerPort: 39092
+        - containerPort: 9092
+        env:
+        - KAFKA_BROKER_ID: 1
+        - KAFKA_ZOOKEEPER_CONNECT: cricradio-zookeeper:32181
+        - KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://cricradio-kafka:29092,LISTENER_GO://cricradio-kafka:9092
+        - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,LISTENER_GO:PLAINTEXT
+        - KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+        - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+        - KAFKA_DELETE_TOPIC_ENABLE: "true"
