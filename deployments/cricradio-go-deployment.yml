@@ -16,9 +16,9 @@ spec:
       name: cricradio-go-pod
       labels:
         app: cricradio-go
-      spec:
-        containers:
-        - name: cricradio-go
-          image: suhasgumma/cricradio-go-svc:kubernetes
-          ports:
-          - containerPort: 9900
+    spec:
+      containers:
+      - name: cricradio-go
+        image: suhasgumma/cricradio-go-svc:kubernetes
+        ports:
+        - containerPort: 9900
