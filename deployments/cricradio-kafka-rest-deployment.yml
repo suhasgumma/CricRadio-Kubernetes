@@ -29,7 +29,7 @@ spec:
         - name: KAFKA_REST_HOST_NAME
           value: cricradio-kafka-service
         - name: KAFKA_REST_LISTENERS
-          value: http://cricradio-kafka-rest-service:38082
+          value: http://localhost:38082
         - name: KAFKA_REST_ACCESS_CONTROL_ALLOW_ORIGIN
           value: "*"
         - name: KAFKA_REST_ACCESS_CONTROL_ALLOW_METHODS
