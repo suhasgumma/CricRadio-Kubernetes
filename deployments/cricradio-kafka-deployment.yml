@@ -27,9 +27,9 @@ spec:
         - name: KAFKA_BROKER_ID
           value: '1'
         - name: KAFKA_ZOOKEEPER_CONNECT
-          value: cricradio-zookeeper:32181
+          value: cricradio-zookeeper-service:32181
         - name: KAFKA_ADVERTISED_LISTENERS
-          value: PLAINTEXT://cricradio-kafka:29092,LISTENER_GO://cricradio-kafka:9092
+          value: PLAINTEXT://cricradio-kafka-service:29092,LISTENER_GO://cricradio-kafka-service:9092
         - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
           value: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,LISTENER_GO:PLAINTEXT
         - name: KAFKA_INTER_BROKER_LISTENER_NAME

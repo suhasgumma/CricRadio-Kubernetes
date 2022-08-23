@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: cricradio-go
-        image: suhasgumma/cricradio-go-svc:kubernetes
+        image: suhasgumma/cricradio-go-svc:kubernetesv2
         ports:
         - containerPort: 9900

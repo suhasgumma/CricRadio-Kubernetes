@@ -6,14 +6,17 @@ spec:
   selector:
     app: cricradio-kafka
   ports:
-    - protocol: TCP
+    - name: kafka
+      protocol: TCP
       port: 29092
       targetPort: 29092
     
-    - protocol: TCP
+    - name: kafka-rest
+      protocol: TCP
       port: 39092
       targetPort: 39092
     
-    - protocol: TCP
+    - name: go
+      protocol: TCP
       port: 9092
       targetPort: 9092
