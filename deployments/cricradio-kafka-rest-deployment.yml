@@ -23,13 +23,13 @@ spec:
         - containerPort: 38082
         env:
         - name: KAFKA_REST_ZOOKEEPER_CONNECT
-          value: cricradio-zookeeper:32181
+          value: cricradio-zookeeper-service:32181
         - name: KAFKA_REST_SCHEMA_REGISTRY_URL
-          value: cricradio-schema-registry:38081
+          value: cricradio-schema-registry-svc:38081
         - name: KAFKA_REST_HOST_NAME
-          value: cricradio-kafka-rest
+          value: cricradio-kafka-service
         - name: KAFKA_REST_LISTENERS
-          value: http://cricradio-kafka-rest:38082
+          value: http://cricradio-kafka-rest-service:38082
         - name: KAFKA_REST_ACCESS_CONTROL_ALLOW_ORIGIN
           value: "*"
         - name: KAFKA_REST_ACCESS_CONTROL_ALLOW_METHODS

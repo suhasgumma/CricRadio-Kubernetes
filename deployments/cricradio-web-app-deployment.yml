@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: cricradio-web-svc
-        image: suhasgumma/cricradio-web-svc:kubernetes
+        image: suhasgumma/cricradio-web-svc:kubernetesv2
         ports:
         - containerPort: 3000
