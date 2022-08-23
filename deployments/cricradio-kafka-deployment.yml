@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cricradio-kafka-deployment
+  name: cricradio-kafka
   labels:
     app: cricradio-kafka-deployment
 
@@ -9,10 +9,10 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cricradio-kafka
-  
+      app: cricradio-kafka 
   template:
-    meatadata:
+    metadata:
+      name: cricradio-kafka-pod
       labels:
         app: cricradio-kafka
     spec:
@@ -24,10 +24,17 @@ spec:
         - containerPort: 39092
         - containerPort: 9092
         env:
-        - KAFKA_BROKER_ID: 1
-        - KAFKA_ZOOKEEPER_CONNECT: cricradio-zookeeper:32181
-        - KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://cricradio-kafka:29092,LISTENER_GO://cricradio-kafka:9092
-        - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,LISTENER_GO:PLAINTEXT
-        - KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-        - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-        - KAFKA_DELETE_TOPIC_ENABLE: "true"
+        - name: KAFKA_BROKER_ID
+          value: '1'
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: cricradio-zookeeper:32181
+        - name: KAFKA_ADVERTISED_LISTENERS
+          value: PLAINTEXT://cricradio-kafka:29092,LISTENER_GO://cricradio-kafka:9092
+        - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+          value: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,LISTENER_GO:PLAINTEXT
+        - name: KAFKA_INTER_BROKER_LISTENER_NAME
+          value: PLAINTEXT
+        - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+          value: '1'
+        - name: KAFKA_DELETE_TOPIC_ENABLE
+          value: "true"

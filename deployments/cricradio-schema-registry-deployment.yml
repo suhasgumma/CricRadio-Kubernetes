@@ -12,7 +12,7 @@ spec:
       app: cricradio-schema-registry
   
   template:
-    meatadata:
+    metadata:
       labels:
         app: cricradio-schema-registry
     spec:
@@ -20,10 +20,15 @@ spec:
       - name: cricradio-schema-registry
         image: confluentinc/cp-schema-registry:4.1.1
         ports:
-          containerPort: 38081
+        - containerPort: 38081
         env:
-        - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: cricradio-zookeeper:32181
-        - SCHEMA_REGISTRY_HOST_NAME: cricradio-schema-registry
-        - SCHEMA_REGISTRY_LISTENERS: http://cricradio-schema-registry:38081
-        - SCHEMA_REGISTRY_DEBUG: "true"
-        - SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS: GET,POST,PUT,OPTIONS
+        - name: SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL
+          value: cricradio-zookeeper:32181
+        - name: SCHEMA_REGISTRY_HOST_NAME
+          value: cricradio-schema-registry
+        - name: SCHEMA_REGISTRY_LISTENERS
+          value: http://cricradio-schema-registry:38081
+        - name: SCHEMA_REGISTRY_DEBUG
+          value: "true"
+        - name: SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS
+          value: GET,POST,PUT,OPTIONS
