@@ -12,12 +12,14 @@ spec:
       app: cricradio-mysql
   
   template:
-    meatadata:
+    metadata:
+      name: cricradio-mysql-pod
       labels:
         app: cricradio-mysql
+
     spec:
       containers:
       - name: cricradio-mysql
         image: mysql:latest
         ports:
-          containerPort: 3307
+        - containerPort: 3307

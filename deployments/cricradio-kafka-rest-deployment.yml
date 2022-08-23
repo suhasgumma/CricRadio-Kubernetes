@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cricradio-kafka-rest-deployment
+  name: cricradio-kafka-rest
   labels:
     app: cricradio-kafka-rest-deployment
 
@@ -9,10 +9,10 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cricradio-kafka-rest
-  
+      app: cricradio-kafka-rest 
   template:
-    meatadata:
+    metadata:
+      name: cricradio-kafka-rest-pod
       labels:
         app: cricradio-kafka-rest
     spec:
@@ -20,12 +20,19 @@ spec:
       - name: cricradio-kafka-rest
         image: confluentinc/cp-kafka-rest:4.1.1
         ports:
-          containerPort: 38082
+        - containerPort: 38082
         env:
-        - KAFKA_REST_ZOOKEEPER_CONNECT: cricradio-zookeeper:32181
-        - KAFKA_REST_SCHEMA_REGISTRY_URL: cricradio-schema-registry:38081
-        - KAFKA_REST_HOST_NAME: cricradio-kafka-rest
-        - KAFKA_REST_LISTENERS: http://cricradio-kafka-rest:38082
-        - KAFKA_REST_ACCESS_CONTROL_ALLOW_ORIGIN: "*"
-        - KAFKA_REST_ACCESS_CONTROL_ALLOW_METHODS: "GET,POST,PUT,DELETE"
-        - KAFKA_REST_ACCESS_CONTROL_ALLOW_HEADERS: "*"
+        - name: KAFKA_REST_ZOOKEEPER_CONNECT
+          value: cricradio-zookeeper:32181
+        - name: KAFKA_REST_SCHEMA_REGISTRY_URL
+          value: cricradio-schema-registry:38081
+        - name: KAFKA_REST_HOST_NAME
+          value: cricradio-kafka-rest
+        - name: KAFKA_REST_LISTENERS
+          value: http://cricradio-kafka-rest:38082
+        - name: KAFKA_REST_ACCESS_CONTROL_ALLOW_ORIGIN
+          value: "*"
+        - name: KAFKA_REST_ACCESS_CONTROL_ALLOW_METHODS
+          value: "GET,POST,PUT,DELETE"
+        - name: KAFKA_REST_ACCESS_CONTROL_ALLOW_HEADERS
+          value: "*"
