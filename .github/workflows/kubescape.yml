@@ -8,5 +8,5 @@ jobs:
     - uses: suhasgumma/github-action@main
       continue-on-error: true
       with:
-        failedThreshold: 50
+        failedThreshold: 100
 
