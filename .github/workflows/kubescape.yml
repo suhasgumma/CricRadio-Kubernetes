@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: kubescape/github-action@main
+    - uses: suhasgumma/github-action@main
       continue-on-error: true
       with:
         format: sarif
