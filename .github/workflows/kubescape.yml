@@ -7,14 +7,3 @@ jobs:
     - uses: actions/checkout@v3
     - uses: suhasgumma/github-action@main
       continue-on-error: true
-      with:
-        format: sarif
-        outputFile: results.sarif
-        # # Optional: Specify the Kubescape cloud account ID
-        # account: ${{secrets.KUBESCAPE_ACCOUNT}}
-        # # Optional: Scan a specific path. Default will scan the whole repository
-        # files: "examples/*.yaml"
-    - name: Upload Kubescape scan results to Github Code Scanning
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: results.sarif
