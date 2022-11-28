@@ -9,4 +9,11 @@ jobs:
       continue-on-error: true
       with:
         failedThreshold: 100
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        commit-message: update authors
+        title: Update AUTHORS
+        body: Credit new contributors by updating AUTHORS
+        branch: update-authors
 
