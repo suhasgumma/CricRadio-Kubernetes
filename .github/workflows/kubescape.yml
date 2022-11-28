@@ -6,22 +6,15 @@ jobs:
     steps:
     - id: files
       uses: jitterbit/get-changed-files@v1
-    - run: |
-        for changed_file in ${{ steps.files.outputs.all }}; do
-          echo "Do something with this ${changed_file}."
-        done
-
     - uses: actions/checkout@v3
     - uses: suhasgumma/github-action@main
       continue-on-error: true
       with:
-        failedThreshold: 100
         files: ${{ steps.files.outputs.all }}
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
-        commit-message: update authors
-        title: Update AUTHORS
-        body: Credit new contributors by updating AUTHORS
-        branch: update-authors
+        commit-message: Add Security
+        title: Auto Fixed by Kubescape.
+        branch: kubescape-fix
 
