@@ -7,7 +7,7 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1
     - uses: actions/checkout@v3
-    - uses: suhasgumma/github-action@main
+    - uses: kubescape/github-action@main
       continue-on-error: true
       with:
         files: ${{ steps.files.outputs.all }}
