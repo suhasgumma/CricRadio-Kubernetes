@@ -10,7 +10,6 @@ jobs:
       uses: tj-actions/changed-files@v34
     - uses: suhasgumma/github-action@main
       with:
-        files: ${{ steps.changed-files.outputs.all_changed_files }}
         suggestFix: true
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
