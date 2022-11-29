@@ -6,7 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        fetch-depth: 2
+        fetch-depth: 0
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v14.6
@@ -14,10 +14,13 @@ jobs:
       with:
         files: ${{ steps.changed-files.outputs.all_changed_files }}
         suggestFix: true
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4
+    - uses: peter-evans/create-pull-request@v4
       with:
         commit-message: Add Security
         title: Auto Fixed by Kubescape.
         branch: kubescape-fix
+        base: ${{ github.event.pull_request.base.sha }}
+        addPaths: |
+          *.yaml
+          *.yml
 
