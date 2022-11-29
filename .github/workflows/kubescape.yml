@@ -4,11 +4,13 @@ jobs:
   kubescape:
     runs-on: ubuntu-latest
     steps:
-    - id: files
-      uses: jitterbit/get-changed-files@v1
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v34
     - uses: actions/checkout@v3
     - uses: suhasgumma/github-action@main
       with:
+        files: ${{ steps.changed-files.outputs.all_changed_files }}
         suggestFix: true
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
