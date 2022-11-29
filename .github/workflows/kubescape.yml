@@ -5,8 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v14.6
     - uses: suhasgumma/github-action@main
       with:
+        files: ${{ steps.changed-files.outputs.all_changed_files }}
         suggestFix: true
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
