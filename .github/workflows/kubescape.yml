@@ -4,10 +4,10 @@ jobs:
   kubescape:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v34
-    - uses: actions/checkout@v3
     - uses: suhasgumma/github-action@main
       with:
         files: ${{ steps.changed-files.outputs.all_changed_files }}
