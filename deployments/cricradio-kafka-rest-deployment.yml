@@ -18,6 +18,17 @@ spec:
       containers:
       - name: cricradio-kafka-rest
         image: confluentinc/cp-kafka-rest:4.1.1
+        securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            seccompProfile:
+                type: RuntimeDefault
+            capabilities:
+                drop: NET_RAW
+            runAsNonRoot: true
+      securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: 38082
         env:

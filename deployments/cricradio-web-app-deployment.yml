@@ -20,5 +20,16 @@ spec:
       containers:
       - name: cricradio-web-svc
         image: suhasgumma/cricradio-web-svc:kubernetesv2
+        securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            seccompProfile:
+                type: RuntimeDefault
+            capabilities:
+                drop: NET_RAW
+            runAsNonRoot: true
+      securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: 3000

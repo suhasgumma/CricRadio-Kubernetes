@@ -18,6 +18,17 @@ spec:
       containers:
       - name: cricradio-kafka
         image: confluentinc/cp-kafka:4.1.1
+        securityContext:
+            seccompProfile:
+                type: RuntimeDefault
+            capabilities:
+                drop: NET_RAW
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+      securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: 29092
         - containerPort: 39092
