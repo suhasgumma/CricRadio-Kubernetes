@@ -7,8 +7,9 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1
     - uses: actions/checkout@v3
-    - uses: kubescape/github-action@main
-      continue-on-error: true
+    - uses: suhasgumma/github-action@main
+      with:
+        suggestFix: true
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
