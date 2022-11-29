@@ -18,5 +18,4 @@ jobs:
       with:
         commit-message: Add Security
         title: Auto Fixed by Kubescape.
-        base: ${{ github.event.pull_request.base.sha }}
-
+        base: ${{ github.head_ref }}
