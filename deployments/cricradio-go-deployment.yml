@@ -5,6 +5,9 @@ metadata:
   labels:
     app: cricradio-go-deployment 
 
+
+
+
     
 spec:
   replicas: 1
