@@ -21,5 +21,16 @@ spec:
       containers:
       - name: cricradio-go
         image: suhasgumma/cricradio-go-svc:kubernetesv2
+        securityContext:
+            readOnlyRootFilesystem: true
+            seccompProfile:
+                type: RuntimeDefault
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+                drop: NET_RAW
+      securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: 9900
