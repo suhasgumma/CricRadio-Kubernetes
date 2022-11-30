@@ -4,6 +4,8 @@ metadata:
   name: cricradio-kafka
   labels:
     app: cricradio-kafka-deployment
+
+    
 spec:
   replicas: 1
   selector:
