@@ -4,13 +4,11 @@ metadata:
   name: cricradio-kafka
   labels:
     app: cricradio-kafka-deployment
-
-    
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cricradio-kafka 
+      app: cricradio-kafka
   template:
     metadata:
       name: cricradio-kafka-pod
@@ -18,24 +16,35 @@ spec:
         app: cricradio-kafka
     spec:
       containers:
-      - name: cricradio-kafka
-        image: confluentinc/cp-kafka:4.1.1
-        ports:
-        - containerPort: 29092
-        - containerPort: 39092
-        - containerPort: 9092
-        env:
-        - name: KAFKA_BROKER_ID
-          value: '1'
-        - name: KAFKA_ZOOKEEPER_CONNECT
-          value: cricradio-zookeeper-service:32181
-        - name: KAFKA_ADVERTISED_LISTENERS
-          value: PLAINTEXT://cricradio-kafka-service:29092,LISTENER_GO://cricradio-kafka-service:9092
-        - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
-          value: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,LISTENER_GO:PLAINTEXT
-        - name: KAFKA_INTER_BROKER_LISTENER_NAME
-          value: PLAINTEXT
-        - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
-          value: '1'
-        - name: KAFKA_DELETE_TOPIC_ENABLE
-          value: "true"
+        - name: cricradio-kafka
+          image: confluentinc/cp-kafka:4.1.1
+          ports:
+            - containerPort: 29092
+            - containerPort: 39092
+            - containerPort: 9092
+          env:
+            - name: KAFKA_BROKER_ID
+              value: '1'
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              value: cricradio-zookeeper-service:32181
+            - name: KAFKA_ADVERTISED_LISTENERS
+              value: PLAINTEXT://cricradio-kafka-service:29092,LISTENER_GO://cricradio-kafka-service:9092
+            - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+              value: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,LISTENER_GO:PLAINTEXT
+            - name: KAFKA_INTER_BROKER_LISTENER_NAME
+              value: PLAINTEXT
+            - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+              value: '1'
+            - name: KAFKA_DELETE_TOPIC_ENABLE
+              value: "true"
+          securityContext:
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: NET_RAW
+            seccompProfile:
+              type: RuntimeDefault
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
