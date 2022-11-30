@@ -16,7 +16,18 @@ spec:
         app: cricradio-go
     spec:
       containers:
-      - name: cricradio-go
-        image: suhasgumma/cricradio-go-svc:kubernetesv2
-        ports:
-        - containerPort: 9900
+        - name: cricradio-go
+          image: suhasgumma/cricradio-go-svc:kubernetesv2
+          ports:
+            - containerPort: 9900
+          securityContext:
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop: NET_RAW
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
