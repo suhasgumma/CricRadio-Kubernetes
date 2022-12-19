@@ -16,6 +16,8 @@ spec:
       name: cricradio-mysql-pod
       labels:
         app: cricradio-mysql
+
+        
     spec:
       containers:
       - name: cricradio-mysql
