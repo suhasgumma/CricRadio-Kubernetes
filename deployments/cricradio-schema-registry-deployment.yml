@@ -32,3 +32,14 @@ spec:
           value: "true"
         - name: SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS
           value: GET,POST,PUT,OPTIONS
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: NET_RAW
+          seccompProfile:
+            type: RuntimeDefault
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
