@@ -14,8 +14,6 @@ spec:
       name: cricradio-kafka-pod
       labels:
         app: cricradio-kafka
-
-        
     spec:
       containers:
       - name: cricradio-kafka
