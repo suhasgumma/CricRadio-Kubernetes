@@ -25,3 +25,14 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: password
+        securityContext:
+          capabilities:
+            drop: NET_RAW
+          seccompProfile:
+            type: RuntimeDefault
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true

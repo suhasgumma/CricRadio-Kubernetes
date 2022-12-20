@@ -21,3 +21,14 @@ spec:
         image: suhasgumma/cricradio-go-svc:kubernetesv2
         ports:
         - containerPort: 9900
+        securityContext:
+          capabilities:
+            drop: NET_RAW
+          seccompProfile:
+            type: RuntimeDefault
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
