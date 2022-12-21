@@ -4,6 +4,8 @@ metadata:
   name: cricradio-schema-registry-deployment
   labels:
     app: cricradio-schema-registry-deployment
+
+    
 spec:
   replicas: 1
   selector:
