@@ -22,5 +22,5 @@ jobs:
         branch: kubescape-auto-fix-${{ github.head_ref || github.ref_name }}
         delete-branch: true
         add-paths: |
-          '**.yml'
-          '**.yaml'
+          "**.yml"
+          "**.yaml"
