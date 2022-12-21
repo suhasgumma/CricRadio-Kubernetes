@@ -16,11 +16,13 @@ jobs:
         suggestFix: true
     - uses: peter-evans/create-pull-request@v4
       with:
-        add-paths: |
-          **.yml
-          **.yaml
         commit-message: Add Security
         title: Auto Fixed by Kubescape.
         base: ${{ github.head_ref }}
         branch: kubescape-auto-fix-${{ github.head_ref || github.ref_name }}
         delete-branch: true
+        add-paths: |
+          **.yml
+          **.yaml
+        
+        
