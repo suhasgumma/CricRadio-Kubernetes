@@ -19,4 +19,4 @@ jobs:
         commit-message: Add Security
         title: Auto Fixed by Kubescape.
         base: ${{ github.head_ref }}
-        branch: ${{ steps.changed-files.outputs.all_changed_files }}
+        branch: ${{ github.head_ref || github.ref_name }} 
