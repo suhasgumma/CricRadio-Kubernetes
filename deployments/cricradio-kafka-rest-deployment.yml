@@ -41,3 +41,14 @@ spec:
           value: "GET,POST,PUT,DELETE"
         - name: KAFKA_REST_ACCESS_CONTROL_ALLOW_HEADERS
           value: "*"
+        securityContext:
+          seccompProfile:
+            type: RuntimeDefault
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: NET_RAW
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
