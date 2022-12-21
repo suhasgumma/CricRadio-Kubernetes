@@ -19,6 +19,9 @@ jobs:
         add-paths: '**.yml'
         commit-message: Add Security
         title: Auto Fixed by Kubescape.
+        body: |
+          Kubescape added some straightforward fixes to enhance security. 
+          You may still need to add some fixes manually that are not conclusive.
         base: ${{ github.head_ref }}
         branch: kubescape-auto-fix-${{ github.head_ref || github.ref_name }}
         delete-branch: true
