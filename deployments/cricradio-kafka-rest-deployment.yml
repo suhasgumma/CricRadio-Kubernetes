@@ -11,8 +11,6 @@ spec:
   selector:
     matchLabels:
       app: cricradio-kafka-rest
-
-
   template:
     metadata:
       name: cricradio-kafka-rest-pod
