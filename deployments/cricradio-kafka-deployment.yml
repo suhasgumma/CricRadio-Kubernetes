@@ -37,3 +37,14 @@ spec:
           value: '1'
         - name: KAFKA_DELETE_TOPIC_ENABLE
           value: "true"
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: NET_RAW
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
