@@ -19,3 +19,14 @@ spec:
         image: suhasgumma/cricradio-web-svc:kubernetesv2
         ports:
         - containerPort: 3000
+        securityContext:
+          capabilities:
+            drop: NET_RAW
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
