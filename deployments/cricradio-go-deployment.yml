@@ -9,7 +9,6 @@ spec:
   selector:
     matchLabels:
       app: cricradio-go
-  
   template:
     metadata:
       name: cricradio-go-pod
