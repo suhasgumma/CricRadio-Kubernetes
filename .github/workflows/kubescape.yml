@@ -1,5 +1,5 @@
 name: Kubescape scanning for misconfigurations
-on: [push, pull_request]
+on: pull_request
 jobs:
   kubescape:
     runs-on: ubuntu-latest
@@ -18,4 +18,5 @@ jobs:
       with:
         commit-message: Add Security
         title: Auto Fixed by Kubescape.
+        base: ${{ github.head_ref }}
         branch: kubescape-auto-fix-${{ github.head_ref || github.ref_name }} 
