@@ -15,7 +15,6 @@ spec:
     metadata:
       labels:
         app: web-app
-    
     spec:
       containers:
       - name: cricradio-web-svc
