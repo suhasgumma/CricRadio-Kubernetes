@@ -19,4 +19,4 @@ jobs:
         commit-message: Add Security
         title: Auto Fixed by Kubescape.
         base: ${{ github.head_ref }}
-        branch: ${{ github.head_ref || github.ref_name }} 
+        branch: kubescape-auto-fix-${{ github.head_ref || github.ref_name }} 
