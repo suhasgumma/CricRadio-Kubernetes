@@ -30,3 +30,14 @@ spec:
           value: '2000'
         - name: ZOOKEEPER_SYNC_LIMIT
           value: '2'
+        securityContext:
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: NET_RAW
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
