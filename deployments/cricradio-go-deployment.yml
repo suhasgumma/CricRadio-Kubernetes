@@ -10,10 +10,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cricradio-go
-
-      
-  
+      app: cricradio-go  
   template:
     metadata:
       name: cricradio-go-pod
