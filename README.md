@@ -1,14 +1,8 @@
-# CricRadio Kubernetes
-### Do not mind multiple commits and pull requests in the repo. This is used for testing GitHub Actions. 
-## Kubernetes Implementation of CricRadio Application
+# ./kubernetes-manifests
 
-### Objects Used
-* Ingress
-* Service
-* Deployment
-* Pod
+:warning: Kubernetes manifests provided in this directory are not directly
+deployable to a cluster. They are meant to be used with `skaffold` command to
+insert the correct `image:` tags.
 
-CricRadio Github Repo: https://github.com/suhasgumma/CricRadio-Containerizing-using-Docker
-
-
-<img src="cricradio-architecture.jpeg">
+Use the manifests in [/release](/release) directory which are configured with
+pre-built public images.
