@@ -48,9 +48,20 @@ spec:
           requests:
             cpu: 70m
             memory: 200Mi
+        securityContext:
+          capabilities:
+            drop: NET_RAW
+          seccompProfile:
+            type: RuntimeDefault
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
       volumes:
       - name: redis-data
         emptyDir: {}
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
 ---
 apiVersion: v1
 kind: Service

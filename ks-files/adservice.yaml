@@ -58,6 +58,17 @@ spec:
           periodSeconds: 15
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:9555"]
+        securityContext:
+          runAsNonRoot: true
+          capabilities:
+            drop: NET_RAW
+          seccompProfile:
+            type: RuntimeDefault
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
 ---
 apiVersion: v1
 kind: Service

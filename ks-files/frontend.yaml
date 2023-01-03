@@ -81,6 +81,17 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+          securityContext:
+            runAsNonRoot: true
+            capabilities:
+              drop: NET_RAW
+            seccompProfile:
+              type: RuntimeDefault
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
 ---
 apiVersion: v1
 kind: Service
