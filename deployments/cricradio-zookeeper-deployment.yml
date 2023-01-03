@@ -11,6 +11,8 @@ spec:
     matchLabels:
       app: cricradio-zookeeper
   
+
+  
   template:
     metadata:
       labels:
