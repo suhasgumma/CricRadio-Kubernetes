@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cricradio-go
+  name: cricradio-go-1
   labels:
-    app: cricradio-go-deployment 
+    app: cricradio-go-deployment-1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cricradio-go
+      app: cricradio-go-1
   template:
     metadata:
-      name: cricradio-go-pod
+      name: cricradio-go-pod-1
       labels:
-        app: cricradio-go
+        app: cricradio-go-1
     spec:
       containers:
-      - name: cricradio-go
+      - name: cricradio-go-1
         image: suhasgumma/cricradio-go-svc:kubernetesv2
         ports:
         - containerPort: 9900

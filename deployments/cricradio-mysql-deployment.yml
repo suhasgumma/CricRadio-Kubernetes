@@ -4,7 +4,6 @@ metadata:
   name: cricradio-mysql-deployment
   labels:
     app: cricradio-mysql-deployment
-
 spec:
   replicas: 1
   selector:
