@@ -8,3 +8,14 @@ spec:
   containers:
   - name: nginx_container
     image: nginx
+    securityContext:
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop: NET_RAW
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      seccompProfile:
+        type: RuntimeDefault
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
